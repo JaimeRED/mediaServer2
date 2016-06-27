@@ -23,4 +23,6 @@ class landing_page extends CI_Controller{
             $this->load->view('login');
         }
     }
+    
+    
 }
