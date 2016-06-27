@@ -27,15 +27,21 @@ class usuario_model extends CI_Model{
         return $resultado;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        $this->load->library('encryption');
+        $this->db->select('password');
+        $this->db->from('usuario');
+        $this->db->where('username',$user);
+        $consulta=$this->db->get();
+        $contrasena=$consulta->row();
+        $decode_inp = $this->encryption->decrypt($pass);
+        $decode_ins = $this->encryption->decrypt($contrasena['password']);
+        if($decode_inp = $decode_ins){
+            $sql = "SELECT nombre, categoria FROM usuario WHERE username = ?";
+            $consulta = $this->sb->query($sql,array($user));
+            $resultado = $consulta->row();
+            return $resultado;
+        }else{
+            return null;
+        }
+    }    
 }
