@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Inicio Sesion</title>
-        <?php echo link_tag('assets/css/main.css'); ?>
+        <link rel="stylesheet" href="<?php base_url()?>assets/css/main.css" />
     </head>
     <body>
         <div id="wrapper">
@@ -21,7 +21,7 @@ and open the template in the editor.
             <div>
                 <p>Por favor inicie sesión para entrar</p>
                 
-                <form method="post" action="login.php" id="login-form">
+                <form method="post" action="<?php base_url()?>index.php/Landing_page/login_post" >
                     <table>
                         <tr>
                             <td>

@@ -8,12 +8,11 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>inicio</title>
-        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="<?php base_url()?>assets/css/main.css" />
     </head>
     <body>
         <div id="index">
             <?php
-            session_start();
             if ($_SESSION) {
                 ?>
                 <h1 style="margin-bottom: 0.05em;">Bienvenido</h1>
@@ -26,22 +25,22 @@ and open the template in the editor.
                     <a href="musicaRadioPlayer.php"> Musica y radios</a><br/>
 
                     <?php
-                    if ($_SESSION['cat'] != 'invitado') {
+                    if ($_SESSION['categoria'] != 'invitado') {
                         echo '<a href="audioform.php"> Subir audio</a><br/>';
                         echo '<a href="videoform.php"> Subir video </a><br/>';
                     }
                     ?>
                     <?php
-                    if ($_SESSION['cat'] == 'admin') {
+                    if ($_SESSION['categoria'] == 'admin') {
                         echo '<a href="usuarioform.php"> Crear usuario</a></br>';
                     }
                     ?>
 
-                    <a href="../progra/cerrar.php">salir</a>
+                    <a href="<?php base_url()?>index.php/Landing_page/logout">salir</a>
                 </div>
                 <?php
             } else {
-                header('Location: login.php');
+                redirect('../index.php');
             }
             ?>
         </div>
