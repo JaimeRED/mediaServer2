@@ -27,7 +27,6 @@ class usuario_model extends CI_Model{
         return $resultado;
     }
     
-    public function verificar_u($user, $pass){
         $this->load->library('encryption');
         $this->db->select('password');
         $this->db->from('usuario');
@@ -44,16 +43,5 @@ class usuario_model extends CI_Model{
         }else{
             return null;
         }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }    
 }
