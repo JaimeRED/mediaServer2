@@ -11,7 +11,7 @@
  *
  * @author janim
  */
-class landing_page extends CI_Controller{
+class Landing_page extends CI_Controller{
     public function __construct() {
         parent::__construct();
     }
@@ -23,18 +23,40 @@ class landing_page extends CI_Controller{
             $this->load->view('login');
         }
     }
-    public function login_post($user,$pass){
-        session_start();
-        $this->load->library('encryption');
-        $this->load->model('usuario_model');
-        $coded = $this->encryption->encrypt($pass);
-        $var = $this->usuario_model->verificar_u($user,$coded);
-        if($var != NULL){
-            $_SESSION['nombre'] = $var['nombre'];
-            $_SESSION['categoria'] = $var['categoria'];
-            $this->load->view('index');
+    public function login_post(){
+        if($this->input->post()){
+            session_start();
+            $user = $this->input->post('user');
+            $pass = $this->input->post('pwd');
+            $this->load->library('encryption');
+            $this->load->model('usuario_model');
+            $coded = $this->encryption->encrypt($pass);
+            $var = $this->usuario_model->verificar_u($user,$coded);
+            if($var != NULL){
+                $_SESSION['nombre'] = $var->nombre;
+                $_SESSION['categoria'] = $var->categoria;
+                redirect('../index.php');
+            } else {
+                session_destroy();
+                redirect('../index.php');
+            }
         } else {
+            echo 'hola';
+        }
+    }
+    
+    public function radio_player(){
+        $data = array();
+        $this->load->model('audio_model');
+        $this->load->view('musicaRadioPlayer');
+    }
+    
+    
+    public function logout(){
+        session_start();
+        if($_SESSION){
             session_destroy();
+            redirect('../index.php');
         }
     }
     

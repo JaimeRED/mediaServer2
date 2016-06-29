@@ -27,21 +27,23 @@ class usuario_model extends CI_Model{
         return $resultado;
     }
     
+    public function verificar_u($user, $pass){
         $this->load->library('encryption');
         $this->db->select('password');
-        $this->db->from('usuario');
-        $this->db->where('username',$user);
-        $consulta=$this->db->get();
-        $contrasena=$consulta->row();
+        $consulta = $this->db->get_where('usuario',array('username' => $user));
+        $pwd = $consulta->row()->password;
         $decode_inp = $this->encryption->decrypt($pass);
-        $decode_ins = $this->encryption->decrypt($contrasena['password']);
-        if($decode_inp = $decode_ins){
-            $sql = "SELECT nombre, categoria FROM usuario WHERE username = ?";
-            $consulta = $this->sb->query($sql,array($user));
+        $decode_ins = $this->encryption->decrypt($pwd);
+        if($decode_inp === $decode_ins){
+            $this->db->select('nombre, categoria');
+            $consulta = $this->db->get_where('usuario',array('username' => $user));
             $resultado = $consulta->row();
             return $resultado;
         }else{
             return null;
         }
-    }    
+    }
+    public function mensaje(){
+        echo 'hola';
+    }
 }
