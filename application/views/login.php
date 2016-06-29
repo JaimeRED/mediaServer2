@@ -47,6 +47,6 @@ and open the template in the editor.
                 <li>&copy; Jacri.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
             </ul>
         </footer>
-        <script src="assets/js/main.js"></script>
+        <script src="<?php base_url()?>assets/js/main.js"></script>
     </body>
 </html>
