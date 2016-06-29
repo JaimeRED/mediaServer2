@@ -16,6 +16,13 @@ class audio_model extends CI_Model{
             }
             
         }
+        public function listado_audios(){
+        $this->db->select('*');
+        $this->db->from('adio');
+        $consulta = $this->db->get();
+        $resultado = $consulta->result();
+        return $resultado;
+    }
     
     public function buscar_a($id_audio){
         $this->db->select('*');
