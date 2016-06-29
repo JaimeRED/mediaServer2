@@ -45,13 +45,6 @@ class Landing_page extends CI_Controller{
         }
     }
     
-    public function radio_player(){
-        $data = array();
-        $this->load->model('audio_model');
-        $this->load->view('musicaRadioPlayer');
-    }
-    
-    
     public function logout(){
         session_start();
         if($_SESSION){

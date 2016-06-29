@@ -22,7 +22,7 @@ and open the template in the editor.
 
                     <a href="peliculasPlayer.php"> Peliculas</a><br/>
 
-                    <a href="<?php base_url()?>index.php/Landing_page/radio_player"> Musica y radios</a><br/>
+                    <a href="musicaRadioPlayer.php"> Musica y radios</a><br/>
 
                     <?php
                     if ($_SESSION['categoria'] != 'invitado') {
