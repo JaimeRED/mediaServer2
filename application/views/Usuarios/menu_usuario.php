@@ -28,7 +28,7 @@ and open the template in the editor.
 
                             <?php
                             if ($_SESSION['categoria'] != 'invitado') {
-                                echo '<a href="audioform.php"> Subir audio</a><br/>';
+                                echo '<a href="http://localhost/mediaServer2/index.php/Audio_control/upload.php"> Subir audio</a><br/>';
                                 echo '<a href="videoform.php"> Subir video </a><br/>';
                             }
                             ?>
