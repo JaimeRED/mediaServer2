@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Menu Usuario</title>
-        <link rel="stylesheet" href="http://localhost/mediaServer2.0/assets/css/main.css" />
+        <link rel="stylesheet" href="http://localhost/mediaServer2/assets/css/main.css" />
     </head>
     <body>
         <?php
@@ -20,11 +20,11 @@ and open the template in the editor.
                         <h1 style="margin-bottom: 0.05em;">Menu</h1>
                         <h1>&nbsp;&nbsp;&nbsp;&nbsp;Usuario</h1>
                         <div>
-                            <a href="http://localhost/mediaServer2.0/index.php"> Inicio</a><br/>
+                            <a href="http://localhost/mediaServer2/index.php"> Inicio</a><br/>
 
                             <a href="peliculasPlayer.php"> Peliculas</a><br/>
 
-                            <a href="http://localhost/mediaServer2.0/index.php/Audio_control/index"> Musica y radios</a><br/>
+                            <a href="http://localhost/mediaServer2/index.php/Audio_control/index"> Musica y radios</a><br/>
 
                             <?php
                             if ($_SESSION['categoria'] != 'invitado') {
@@ -34,7 +34,7 @@ and open the template in the editor.
                             ?>
                             <?php
                             if ($_SESSION['categoria'] == 'admin') {
-                                echo '<a href="http://localhost/mediaServer2.0/index.php/Usuario_control/index"> Menu usuario</a></br>';
+                                echo '<a href="http://localhost/mediaServer2/index.php/Usuario_control/index"> Menu usuario</a></br>';
                             }
                             ?>
 
@@ -42,7 +42,17 @@ and open the template in the editor.
                         </div>
                     </div>
                     <div id="center-side">
-                        <button type="button" value="Nuevo_Usuario">Nuevo Usuario</button>
+                        <br/><br/><br/><br/><br/><br/>
+                        <form method="post" action="guardar" style="margin-left: 4em">
+                            <input type="text" value="0" style="display: none"/>
+                            <input type="submit" value="Nuevo Usuario"></button>
+                        </form>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <form method="post" action="lista_usuarios" style="margin-left: 4em">
+                            <input type="text" value="0" style="display: none"/>
+                            <input type="submit" value="Lista Usuarios"></button><br/><br/>
+                        </form>
                     </div>
                 </div>
                 <?php
@@ -56,6 +66,6 @@ and open the template in the editor.
                 <li>&copy; Jacri.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
             </ul>
         </footer>
-        <script src="http://localhost/mediaServer2.0/assets/js/main.js"></script>
+        <script src="http://localhost/mediaServer2/assets/js/main.js"></script>
     </body>
 </html>
