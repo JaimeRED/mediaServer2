@@ -18,7 +18,7 @@ class audio_model extends CI_Model{
         }
         public function listado_audios(){
         $this->db->select('*');
-        $this->db->from('adio');
+        $this->db->from('audio');
         $consulta = $this->db->get();
         $resultado = $consulta->result();
         return $resultado;
@@ -26,11 +26,42 @@ class audio_model extends CI_Model{
     
     public function buscar_a($id_audio){
         $this->db->select('*');
-        $this->db->from('audio');
-        $this->db->where('id_audio',$id_audio);
-        $consulta=$this->db->get();
-        $resultado=$consulta->row();
-        return $resultado;
+            $this->db->from('audio a'); 
+            $this->db->join('imagen i', 'a.id_imagen = i.id_imagen');
+            $this->db->where('a.id_audio',$id_audio);
+            $this->db->order_by('a.id_audio','asc');         
+            $consulta = $this->db->get();
+            $resultado = $consulta->row();
+            if($consulta->num_rows() != 0)
+            {
+                return $resultado;
+            }
+            else
+            {
+                return false;
+            }
     }     
+    
+       public function Eliminar_v($id_audio){
+           $this->db->where('id_audio',$id_audio);
+           $this->db->delete('audio');
+       }
+       
+       public function listar_audio(){
+            $this->db->select('*');
+            $this->db->from('audio a'); 
+            $this->db->join('imagen i', 'a.id_imagen = i.id_imagen');
+            $this->db->order_by('a.id_audio','asc');         
+            $consulta = $this->db->get();
+            $resultado = $consulta->result();
+            if($consulta->num_rows() != 0)
+            {
+                return $resultado;
+            }
+            else
+            {
+                return false;
+            }
+       }
 }
 

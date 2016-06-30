@@ -3,7 +3,6 @@ class usuario_model extends CI_Model{
     public function _construct(){
         parent::__construct();
     }
-    
     public function guardar_u($nombre,$username,$password,$categoria,$idusuario=null){
         $data=array('nombre'=>$nombre,'username'=>$username,'password'=>$password,'categoria'=>$categoria);
         if($idusuario){
