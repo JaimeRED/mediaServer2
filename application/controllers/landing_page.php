@@ -15,6 +15,7 @@ class Landing_page extends CI_Controller{
     public function __construct() {
         parent::__construct();
     }
+    
     public function index(){
         session_start();
         if($_SESSION){
@@ -45,12 +46,17 @@ class Landing_page extends CI_Controller{
         }
     }
     
-    public function radio_player(){
-        $data = array();
-        $this->load->model('audio_model');
-        $this->load->view('musicaRadioPlayer');
+    public function radio_player_post(){
+        session_start();
+        if($_SESSION){
+            $data = array();
+            $this->load->model('audio_model');
+            $data['lAudio'] = $this->audio_model->listado_audios();
+            $this->load->view('musicaRadioPlayer',$data);
+        } else {
+            $this->load->view('login');
+        }
     }
-    
     
     public function logout(){
         session_start();
