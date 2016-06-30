@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Inicio Sesion</title>
-        <link rel="stylesheet" href="http://localhost/mediaServer2.0/assets/css/main.css" />
+        <link rel="stylesheet" href="http://localhost/mediaServer2/assets/css/main.css" />
     </head>
     <body>
         <div id="wrapper">

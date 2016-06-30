@@ -36,10 +36,10 @@ class Landing_page extends CI_Controller{
             if($var != NULL){
                 $_SESSION['nombre'] = $var->nombre;
                 $_SESSION['categoria'] = $var->categoria;
-                redirect('../index.php');
+                redirect('./index.php');
             } else {
                 session_destroy();
-                redirect('../index.php');
+                redirect('./index.php');
             }
         } else {
             echo 'hola';
@@ -62,7 +62,7 @@ class Landing_page extends CI_Controller{
         session_start();
         if($_SESSION){
             session_destroy();
-            redirect('../index.php');
+            redirect('./index.php');
         }
     }
     

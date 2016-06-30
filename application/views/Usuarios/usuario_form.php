@@ -7,17 +7,18 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Menu Usuario</title>
+        <title>Agregar/Editar Usuario</title>
         <link rel="stylesheet" href="http://localhost/mediaServer2/assets/css/main.css" />
     </head>
     <body>
         <?php
+        session_start();
         if ($_SESSION) {
             if ($_SESSION['categoria'] == 'admin') {
                 ?>
                 <div id="wrapper">
                     <div id="index">
-                        <h1 style="margin-bottom: 0.05em;">Menu</h1>
+                        <h1 style="margin-bottom: 0.05em;">Nuevo</h1>
                         <h1>&nbsp;&nbsp;&nbsp;&nbsp;Usuario</h1>
                         <div>
                             <a href="http://localhost/mediaServer2/index.php"> Inicio</a><br/>
@@ -28,7 +29,7 @@ and open the template in the editor.
 
                             <?php
                             if ($_SESSION['categoria'] != 'invitado') {
-                                echo '<a href="http://localhost/mediaServer2/index.php/Audio_control/upload.php"> Subir audio</a><br/>';
+                                echo '<a href="http://localhost/mediaServer2/index.php/Audio_control/upload"> Subir audio</a><br/>';
                                 echo '<a href="videoform.php"> Subir video </a><br/>';
                             }
                             ?>
@@ -42,16 +43,19 @@ and open the template in the editor.
                         </div>
                     </div>
                     <div id="center-side">
-                        <br/><br/><br/><br/><br/><br/>
-                        <form method="post" action="guardar" style="margin-left: 4em">
-                            <input type="text" value="0" style="display: none"/>
-                            <input type="submit" value="Nuevo Usuario"></button>
-                        </form>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <form method="post" action="lista_usuarios" style="margin-left: 4em">
-                            <input type="text" value="0" style="display: none"/>
-                            <input type="submit" value="Lista Usuarios"></button><br/><br/>
+                        <form method="post" action="http://localhost/mediaServer2/index.php/Usuario_control/guardar_post/<?php echo $id_usuario?>">
+                            Nombre <input type="text" name="nombre" value="<?php echo $nombre?>"/><br/>
+                            Usuario <input type="text" name="usuario" value="<?php echo $username?>"/><br/>
+                            Contraseña <input type="password" name="pwd" value="<?php echo $username?>" ><br/>
+                            Categoria<br/>
+                            <div id="radios">
+                                <input type="radio" name="categoria" value="invitado"> Invitado<br/>
+                                <input type="radio" name="categoria" value="miembro"> Miembro <br/>
+                                <input type="radio" name="categoria" value="admin"> administrador <br/>
+                            </div>
+                            <br/>
+                            <input type="text" name="id_usuario" value="<?php echo $id_usuario ?>" style="display: none"/>
+                            <input type="submit" value="GUARDAR"/>
                         </form>
                     </div>
                 </div>
@@ -66,6 +70,6 @@ and open the template in the editor.
                 <li>&copy; Jacri.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
             </ul>
         </footer>
-        <script src="http://localhost/mediaServer2/assets/js/main.js"></script>
+        <script src="assets/js/main.js"></script>
     </body>
 </html>

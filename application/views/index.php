@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>inicio</title>
-        <link rel="stylesheet" href="http://localhost/mediaServer2.0/assets/css/main.css" />
+        <link rel="stylesheet" href="http://localhost/mediaServer2/assets/css/main.css" />
     </head>
     <body>
         <div id="index">
@@ -18,21 +18,21 @@ and open the template in the editor.
                 <h1 style="margin-bottom: 0.05em;">Bienvenido</h1>
                 <h1>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['nombre'] ?></h1>
                 <div>
-                    <a href="http://localhost/mediaServer2.0/index.php"> Inicio</a><br/>
+                    <a href="http://localhost/mediaServer2/index.php"> Inicio</a><br/>
 
                     <a href="peliculasPlayer.php"> Peliculas</a><br/>
 
-                    <a href="http://localhost/mediaServer2.0/index.php/Audio_control/index"> Musica y radios</a><br/>
+                    <a href="http://localhost/mediaServer2/index.php/Audio_control/index"> Musica y radios</a><br/>
 
                     <?php
                     if ($_SESSION['categoria'] != 'invitado') {
-                        echo '<a href="audioform.php"> Subir audio</a><br/>';
+                        echo '<a href="http://localhost/mediaServer2/index.php/Audio_control/upload"> Subir audio</a><br/>';
                         echo '<a href="videoform.php"> Subir video </a><br/>';
                     }
                     ?>
                     <?php
                     if ($_SESSION['categoria'] == 'admin') {
-                        echo '<a href="http://localhost/mediaServer2.0/index.php/Usuario_control/index"> Menu usuario</a></br>';
+                        echo '<a href="http://localhost/mediaServer2/index.php/Usuario_control/index"> Menu usuario</a></br>';
                     }
                     ?>
 

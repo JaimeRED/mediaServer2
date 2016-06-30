@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Musica y Radios</title>
-        <link rel="stylesheet" href="http://localhost/mediaServer2.0/assets/css/main.css" />
+        <link rel="stylesheet" href="http://localhost/mediaServer2/assets/css/main.css" />
     </head>
     <body>
         <div id="wrapper">
@@ -16,7 +16,7 @@ and open the template in the editor.
                 <h1 style="margin-bottom: 0.05em;">Musica y</h1>
                 <h1>&nbsp;&nbsp;&nbsp;&nbsp;Señal en Vivo</h1>
                 <div>
-                    <a href="http://localhost/mediaServer2.0/index.php"> Inicio</a><br/>
+                    <a href="http://localhost/mediaServer2/index.php"> Inicio</a><br/>
 
                     <a href="peliculasPlayer.php"> Peliculas</a><br/>
 
@@ -24,24 +24,24 @@ and open the template in the editor.
 
                     <?php
                     if ($_SESSION['categoria'] != 'invitado') {
-                        echo '<a href="audioform.php"> Subir audio</a><br/>';
+                        echo '<a href="http://localhost/mediaServer2/index.php/Audio_control/upload"> Subir audio</a><br/>';
                         echo '<a href="videoform.php"> Subir video </a><br/>';
                     }
                     ?>
                     <?php
                     if ($_SESSION['categoria'] == 'admin') {
-                        echo '<a href="usuarioform.php"> Crear usuario</a></br>';
+                        echo '<a href="http://localhost/mediaServer2/index.php/Usuario_control/index"> Crear usuario</a></br>';
                     }
                     ?>
 
-                    <a href="http://localhost/mediaServer2.0/index.php/Landing_page/logout">salir</a>
+                    <a href="http://localhost/mediaServer2/index.php/Landing_page/logout">salir</a>
                 </div>
             </div>
             <div id="center-side" center>
                 <form method="post" action="player" name="selector">
                     <?php
                     foreach ($lAudio as $audio) {
-                        echo '<input type="radio" value="' . $audio->id_audio . '" name="audio"/><image src="http://localhost/mediaServer2.0/' . $audio->dir_imagen . '" alt="' . $audio->titulo . '" width="25%" heigth="25%"/><br/><br/>';
+                        echo '<input type="radio" value="' . $audio->id_audio . '" name="audio"/><image src="http://localhost/mediaServer2/' . $audio->dir_imagen . '" alt="' . $audio->titulo . '" width="25%" heigth="25%"/><br/><br/>';
                     }
                     ?>
                     <br/>
@@ -54,6 +54,6 @@ and open the template in the editor.
                 <li>&copy; Jacri.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
             </ul>
         </footer>
-        <script src="http://localhost/mediaServer2.0/assets/js/main.js"></script>
+        <script src="http://localhost/mediaServer2/assets/js/main.js"></script>
     </body>
 </html>
