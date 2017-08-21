@@ -11,10 +11,11 @@
  *
  * @author janim
  */
-class landing_page extends CI_Controller{
+class Landing_page extends CI_Controller{
     public function __construct() {
         parent::__construct();
     }
+    
     public function index(){
         session_start();
         if($_SESSION){
@@ -23,4 +24,46 @@ class landing_page extends CI_Controller{
             $this->load->view('login');
         }
     }
+    public function login_post(){
+        if($this->input->post()){
+            session_start();
+            $user = $this->input->post('user');
+            $pass = $this->input->post('pwd');
+            $this->load->library('encryption');
+            $this->load->model('usuario_model');
+            $coded = $this->encryption->encrypt($pass);
+            $var = $this->usuario_model->verificar_u($user,$coded);
+            if($var != NULL){
+                $_SESSION['nombre'] = $var->nombre;
+                $_SESSION['categoria'] = $var->categoria;
+                redirect('./index.php');
+            } else {
+                session_destroy();
+                redirect('./index.php');
+            }
+        } else {
+            echo 'hola';
+        }
+    }
+    
+    public function radio_player_post(){
+        session_start();
+        if($_SESSION){
+            $data = array();
+            $this->load->model('audio_model');
+            $data['lAudio'] = $this->audio_model->listado_audios();
+            $this->load->view('musicaRadioPlayer',$data);
+        } else {
+            $this->load->view('login');
+        }
+    }
+    
+    public function logout(){
+        session_start();
+        if($_SESSION){
+            session_destroy();
+            redirect('./index.php');
+        }
+    }
+    
 }

@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Inicio Sesion</title>
-        <?php echo link_tag('assets/css/main.css'); ?>
+        <link rel="stylesheet" href="http://localhost/mediaServer2/assets/css/main.css" />
     </head>
     <body>
         <div id="wrapper">
@@ -21,7 +21,7 @@ and open the template in the editor.
             <div>
                 <p>Por favor inicie sesión para entrar</p>
                 
-                <form method="post" action="login.php" id="login-form">
+                <form method="post" action="<?php base_url()?>index.php/Landing_page/login_post" >
                     <table>
                         <tr>
                             <td>
@@ -47,6 +47,6 @@ and open the template in the editor.
                 <li>&copy; Jacri.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
             </ul>
         </footer>
-        <script src="assets/js/main.js"></script>
+        <script src="<?php base_url()?>assets/js/main.js"></script>
     </body>
 </html>
